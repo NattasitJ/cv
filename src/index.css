@@ -27,8 +27,8 @@
   --border:         rgba(59, 130, 246, 0.12);
   --border-hover:   rgba(59, 130, 246, 0.35);
 
-  --gradient-hero:  linear-gradient(135deg, #050B18 0%, #0D1B2A 50%, #0F1F3D 100%);
-  --gradient-card:  linear-gradient(135deg, rgba(13,27,42,0.9) 0%, rgba(26,39,68,0.6) 100%);
+  --gradient-hero:  radial-gradient(ellipse at 50% 0%, #0F2347 0%, #081126 50%, #050B18 100%);
+  --gradient-card:  linear-gradient(135deg, rgba(13,27,42,0.85) 0%, rgba(26,39,68,0.5) 100%);
   --gradient-accent: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
   --gradient-text:  linear-gradient(135deg, #60A5FA 0%, #93C5FD 50%, #BFDBFE 100%);
 
@@ -36,9 +36,8 @@
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Outfit', 'Inter', sans-serif;
 
-  /* Spacing */
-  --sidebar-w: 260px;
-  --section-gap: 100px;
+  /* Container width */
+  --container-max: 1040px;
 
   /* Radius */
   --radius-sm:  6px;
@@ -67,6 +66,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -77,18 +77,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
 }
 
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--bg-surface-3);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
@@ -96,20 +98,26 @@ body {
 
 /* ─── Layout ─── */
 .app-layout {
-  display: flex;
+  width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-content {
-  margin-left: var(--sidebar-w);
-  flex: 1;
-  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ─── Section Base ─── */
 .section {
-  padding: 90px 64px;
-  max-width: 900px;
+  width: 100%;
+  max-width: var(--container-max);
+  padding: 100px 32px;
+  margin: 0 auto;
 }
 
 .section-label {
@@ -135,7 +143,7 @@ body {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: clamp(30px, 4.5vw, 44px);
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
@@ -155,7 +163,7 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 28px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   transition: var(--transition-med);
 }
 
@@ -170,7 +178,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 14px;
@@ -186,32 +194,36 @@ body {
 .btn-primary {
   background: var(--gradient-accent);
   color: #fff;
-  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
+  box-shadow: 0 4px 20px rgba(59,130,246,0.35);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 28px rgba(59,130,246,0.5);
+  box-shadow: 0 8px 30px rgba(59,130,246,0.55);
   transform: translateY(-2px) scale(1.02);
 }
 
 .btn-outline {
-  background: transparent;
+  background: rgba(13,27,42,0.6);
   color: var(--text-primary);
   border: 1px solid var(--border-hover);
+  backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
   background: var(--accent-dim);
   border-color: var(--accent);
   color: var(--accent-light);
+  box-shadow: 0 0 16px var(--accent-glow-sm);
+  transform: translateY(-2px);
 }
 
 /* ─── Divider ─── */
 .section-divider {
   width: 100%;
+  max-width: var(--container-max);
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
-  margin: 0 64px;
+  background: linear-gradient(90deg, transparent 0%, var(--border-hover) 50%, transparent 100%);
+  margin: 0 auto;
 }
 
 /* ─── Badge / Tag ─── */
@@ -232,24 +244,21 @@ body {
 .badge:hover {
   background: rgba(59,130,246,0.25);
   border-color: var(--accent);
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 768px) {
-  :root {
-    --sidebar-w: 0px;
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 1100px) {
   .section {
-    padding: 70px 24px;
+    padding: 90px 28px;
   }
+}
 
-  .section-divider {
-    margin: 0 24px;
+@media (max-width: 768px) {
+  .section {
+    padding: 70px 20px;
+  }
+  .section-title {
+    margin-bottom: 36px;
   }
 }

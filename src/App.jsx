@@ -1,5 +1,4 @@
 import './App.css'
-import Sidebar from './components/Sidebar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -12,9 +11,6 @@ import Contact from './components/Contact'
 export default function App() {
   return (
     <div className="app-layout">
-      {/* Fixed Sidebar Navigation */}
-      <Sidebar />
-
       {/* Main Scrollable Content */}
       <main className="main-content" id="main-content">
         <Hero />
