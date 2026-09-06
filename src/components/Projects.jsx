@@ -1,4 +1,4 @@
-import { Github, ExternalLink } from 'lucide-react'
+import { Github, ExternalLink, ShieldCheck } from 'lucide-react'
 import { projects } from '../data/resumeData'
 import { FadeInSection, GradientText, BorderGlow } from './AnimatedComponents'
 
@@ -63,6 +63,24 @@ export default function Projects() {
                       <ExternalLink size={13} />
                       Live Demo
                     </a>
+                  )}
+                  {!project.github && !project.demo && (
+                    <span
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        fontSize: '12px',
+                        color: 'var(--text-muted)',
+                        padding: '4px 8px',
+                        borderRadius: '6px',
+                        background: 'rgba(255, 255, 255, 0.04)',
+                        border: '1px solid var(--border)',
+                      }}
+                    >
+                      <ShieldCheck size={13} style={{ color: 'var(--accent)' }} />
+                      Enterprise Production System
+                    </span>
                   )}
                 </div>
               </div>

@@ -28,25 +28,32 @@ export default function Education() {
               <div className="edu-card-body">
                 <div className="edu-header">
                   <div>
-                    <div className="edu-institution">{edu.institution}</div>
-                    <div className="edu-degree">
+                    <div className="edu-institution" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <GraduationCap size={22} style={{ color: 'var(--accent)' }} />
+                      {edu.institution}
+                    </div>
+                    <div className="edu-degree" style={{ marginTop: '4px' }}>
                       {edu.degree} · <span style={{ color: 'var(--accent-light)' }}>{edu.field}</span>
                     </div>
                     <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '6px' }}>
                       {edu.period} · {edu.location}
                     </div>
                   </div>
-                  <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                    <div className="edu-gpa">{edu.gpa}</div>
-                    <div className="edu-gpa-label">GPA</div>
-                  </div>
+                  {edu.gpa && (
+                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                      <div className="edu-gpa">{edu.gpa}</div>
+                      <div className="edu-gpa-label">GPA</div>
+                    </div>
+                  )}
                 </div>
 
-                <ul className="edu-highlights" aria-label="Highlights">
-                  {edu.highlights.map((h) => (
-                    <li key={h}>{h}</li>
-                  ))}
-                </ul>
+                {edu.highlights && edu.highlights.length > 0 && (
+                  <ul className="edu-highlights" aria-label="Highlights">
+                    {edu.highlights.map((h) => (
+                      <li key={h}>{h}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </BorderGlow>
           </FadeInSection>

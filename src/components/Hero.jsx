@@ -3,6 +3,8 @@ import { personalInfo } from '../data/resumeData'
 import { OrbBackground, BlurText, TextLoop } from './AnimatedComponents'
 
 export default function Hero() {
+  const isCvAvailable = personalInfo.cvFile && personalInfo.cvFile !== '#'
+
   return (
     <section id="hero" className="hero-section" aria-label="Introduction">
       <OrbBackground />
@@ -34,16 +36,28 @@ export default function Hero() {
 
         {/* CTA */}
         <div className="hero-cta">
-          <a
-            href={personalInfo.cvFile}
-            download
-            className="btn btn-primary"
-            id="hero-download-cv"
-            aria-label="Download CV"
-          >
-            <Download size={16} />
-            Download CV
-          </a>
+          {isCvAvailable ? (
+            <a
+              href={personalInfo.cvFile}
+              download="NATTASIT_JANWISET_CV.pdf"
+              className="btn btn-primary"
+              id="hero-download-cv"
+              aria-label="Download CV"
+            >
+              <Download size={16} />
+              Download CV
+            </a>
+          ) : (
+            <a
+              href={`mailto:${personalInfo.email}?subject=CV%20Request%20-%20Nattasit%20Janwiset`}
+              className="btn btn-primary"
+              id="hero-download-cv"
+              aria-label="Contact / Request CV"
+            >
+              <Download size={16} />
+              Get In Touch / CV
+            </a>
+          )}
           <button
             className="btn btn-outline"
             id="hero-contact-btn"

@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone } from 'lucide-react'
+import { MapPin, Mail, Globe, Languages } from 'lucide-react'
 import { personalInfo, stats } from '../data/resumeData'
 import { FadeInSection, CountUp, GradientText, BorderGlow } from './AnimatedComponents'
 
@@ -27,16 +27,12 @@ export default function About() {
           >
             <div className="about-bio-card">
               <p className="about-bio">
-                {personalInfo.bio.split('scalable web applications').map((part, i) =>
-                  i === 0 ? (
-                    <span key={i}>
-                      {part}
-                      <span className="about-highlight">scalable web applications</span>
-                    </span>
-                  ) : (
-                    <span key={i}>{part}</span>
-                  )
-                )}
+                Software Developer with{' '}
+                <span className="about-highlight">5+ years of experience</span> in advanced
+                troubleshooting and complex system logic. Proven background in managing
+                environments with <span className="about-highlight">Docker/WSL</span>,
+                automated backups, and enterprise reporting. Dedicated to delivering
+                reliable solutions using <span className="about-highlight">Cloud and AI</span>.
               </p>
 
               <div className="about-details">
@@ -46,12 +42,56 @@ export default function About() {
                 </div>
                 <div className="about-detail-item">
                   <Mail size={15} />
-                  <span>{personalInfo.email}</span>
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    style={{ color: 'inherit', textDecoration: 'none' }}
+                  >
+                    {personalInfo.email}
+                  </a>
                 </div>
-                <div className="about-detail-item">
-                  <Phone size={15} />
-                  <span>{personalInfo.phone}</span>
-                </div>
+                {personalInfo.website && (
+                  <div className="about-detail-item">
+                    <Globe size={15} />
+                    <a
+                      href={personalInfo.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: 'var(--accent-light)',
+                        textDecoration: 'none',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {personalInfo.website.replace('https://', '')}
+                    </a>
+                  </div>
+                )}
+                {personalInfo.languages && personalInfo.languages.length > 0 && (
+                  <div className="about-detail-item" style={{ alignItems: 'flex-start' }}>
+                    <Languages size={15} style={{ marginTop: '3px' }} />
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                      {personalInfo.languages.map((lang) => (
+                        <span
+                          key={lang.name}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            background: 'rgba(234, 179, 8, 0.1)',
+                            border: '1px solid rgba(234, 179, 8, 0.25)',
+                            color: 'var(--text-primary)',
+                            padding: '3px 10px',
+                            borderRadius: '12px',
+                            fontSize: '12px',
+                          }}
+                        >
+                          <strong style={{ color: 'var(--accent-light)' }}>{lang.name}:</strong>{' '}
+                          <span style={{ color: 'var(--text-secondary)' }}>{lang.level}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </BorderGlow>
