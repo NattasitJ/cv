@@ -1,5 +1,5 @@
 /* ================================================================
-   DESIGN SYSTEM — Deep Navy + Electric Blue Dark Mode
+   DESIGN SYSTEM — Obsidian Dark + Electric Gold / Amber Yellow
    ================================================================ */
 
 /* ─── Google Fonts ─── */
@@ -7,30 +7,34 @@
 
 /* ─── CSS Variables ─── */
 :root {
-  /* Colors */
-  --bg-base:        #050B18;
-  --bg-surface:     #0D1B2A;
-  --bg-surface-2:   #1A2744;
-  --bg-surface-3:   #243455;
+  /* Backgrounds */
+  --bg-base:        #08090C;
+  --bg-surface:     #111319;
+  --bg-surface-2:   #181B24;
+  --bg-surface-3:   #232734;
 
-  --accent:         #3B82F6;
-  --accent-light:   #60A5FA;
-  --accent-dim:     rgba(59, 130, 246, 0.15);
-  --accent-glow:    rgba(59, 130, 246, 0.4);
-  --accent-glow-sm: rgba(59, 130, 246, 0.2);
+  /* Yellow / Amber Accents */
+  --accent:         #EAB308;
+  --accent-light:   #FDE047;
+  --accent-dim:     rgba(234, 179, 8, 0.14);
+  --accent-glow:    rgba(234, 179, 8, 0.38);
+  --accent-glow-sm: rgba(234, 179, 8, 0.18);
 
-  --text-primary:   #E2E8F0;
+  /* Typography Colors */
+  --text-primary:   #F1F5F9;
   --text-secondary: #94A3B8;
   --text-muted:     #64748B;
-  --text-accent:    #60A5FA;
+  --text-accent:    #FACC15;
 
-  --border:         rgba(59, 130, 246, 0.12);
-  --border-hover:   rgba(59, 130, 246, 0.35);
+  /* Borders */
+  --border:         rgba(234, 179, 8, 0.12);
+  --border-hover:   rgba(234, 179, 8, 0.35);
 
-  --gradient-hero:  radial-gradient(ellipse at 50% 0%, #0F2347 0%, #081126 50%, #050B18 100%);
-  --gradient-card:  linear-gradient(135deg, rgba(13,27,42,0.85) 0%, rgba(26,39,68,0.5) 100%);
-  --gradient-accent: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
-  --gradient-text:  linear-gradient(135deg, #60A5FA 0%, #93C5FD 50%, #BFDBFE 100%);
+  /* Gradients */
+  --gradient-hero:  radial-gradient(ellipse at 50% 0%, #261E06 0%, #121008 50%, #08090C 100%);
+  --gradient-card:  linear-gradient(135deg, rgba(17, 19, 25, 0.88) 0%, rgba(27, 30, 40, 0.55) 100%);
+  --gradient-accent: linear-gradient(135deg, #EAB308 0%, #FACC15 50%, #FDE047 100%);
+  --gradient-text:  linear-gradient(135deg, #FEF08A 0%, #FACC15 50%, #EAB308 100%);
 
   /* Typography */
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -46,9 +50,9 @@
   --radius-xl:  32px;
 
   /* Shadows */
-  --shadow-glow:    0 0 30px rgba(59,130,246,0.25), 0 0 60px rgba(59,130,246,0.1);
-  --shadow-card:    0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
-  --shadow-card-hover: 0 8px 40px rgba(0,0,0,0.5), 0 0 20px rgba(59,130,246,0.2);
+  --shadow-glow:       0 0 30px rgba(234, 179, 8, 0.25), 0 0 60px rgba(234, 179, 8, 0.1);
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.45), 0 1px 4px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(234, 179, 8, 0.18);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -193,17 +197,18 @@ body {
 
 .btn-primary {
   background: var(--gradient-accent);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+  color: #0A0B0E;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(234, 179, 8, 0.35);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 30px rgba(59,130,246,0.55);
+  box-shadow: 0 8px 30px rgba(234, 179, 8, 0.55);
   transform: translateY(-2px) scale(1.02);
 }
 
 .btn-outline {
-  background: rgba(13,27,42,0.6);
+  background: rgba(17, 19, 25, 0.6);
   color: var(--text-primary);
   border: 1px solid var(--border-hover);
   backdrop-filter: blur(8px);
@@ -237,12 +242,12 @@ body {
   letter-spacing: 0.02em;
   background: var(--accent-dim);
   color: var(--accent-light);
-  border: 1px solid rgba(59,130,246,0.2);
+  border: 1px solid rgba(234, 179, 8, 0.2);
   transition: var(--transition-fast);
 }
 
 .badge:hover {
-  background: rgba(59,130,246,0.25);
+  background: rgba(234, 179, 8, 0.25);
   border-color: var(--accent);
   transform: scale(1.04);
 }

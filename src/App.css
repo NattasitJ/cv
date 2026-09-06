@@ -10,7 +10,7 @@
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(95px);
   animation: orb-float 8s ease-in-out infinite;
   will-change: transform, opacity;
 }
@@ -18,7 +18,7 @@
 .orb-1 {
   width: min(650px, 80vw);
   height: min(650px, 80vw);
-  background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, rgba(59,130,246,0.05) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.28) 0%, rgba(234, 179, 8, 0.05) 70%, transparent 100%);
   top: -150px;
   right: 5%;
   animation-delay: 0s;
@@ -27,7 +27,7 @@
 .orb-2 {
   width: min(500px, 70vw);
   height: min(500px, 70vw);
-  background: radial-gradient(circle, rgba(96,165,250,0.18) 0%, rgba(59,130,246,0.04) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.18) 0%, rgba(234, 179, 8, 0.04) 70%, transparent 100%);
   bottom: -50px;
   left: 5%;
   animation-delay: -4s;
@@ -36,7 +36,7 @@
 .orb-3 {
   width: min(350px, 50vw);
   height: min(350px, 50vw);
-  background: radial-gradient(circle, rgba(147,197,253,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.14) 0%, transparent 70%);
   top: 35%;
   left: 40%;
   animation-delay: -2s;
@@ -190,15 +190,28 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: 48px;
-  align-items: center;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.about-bio-glow {
+  height: 100%;
+}
+
+.about-bio-card {
+  padding: 36px 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .about-bio {
   font-size: 17px;
   color: var(--text-secondary);
   line-height: 1.85;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .about-highlight {
@@ -210,6 +223,26 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+}
+
+.stat-glow-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.stat-glow-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-card-inner {
+  padding: 24px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .stat-card {
@@ -298,7 +331,7 @@
   top: 24px;
   bottom: 24px;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), rgba(59,130,246,0.3) 70%, transparent);
+  background: linear-gradient(to bottom, var(--accent), rgba(234, 179, 8, 0.3) 70%, transparent);
 }
 
 .timeline-item {
@@ -323,7 +356,7 @@
   justify-content: center;
   flex-shrink: 0;
   margin-top: 4px;
-  box-shadow: 0 0 16px rgba(59,130,246,0.3);
+  box-shadow: 0 0 16px rgba(234, 179, 8, 0.3);
   transition: var(--transition-med);
 }
 
@@ -340,7 +373,22 @@
 }
 
 .timeline-item:hover .timeline-dot svg {
-  color: #fff;
+  color: #0A0B0E;
+}
+
+.timeline-glow-card {
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-glow-card:hover {
+  transform: translateY(-2px);
+}
+
+.timeline-card-body {
+  padding: 32px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .timeline-card {
@@ -374,7 +422,7 @@
 
 .timeline-period {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--accent-light);
   background: var(--accent-dim);
   padding: 5px 12px;
@@ -444,9 +492,38 @@
   .timeline-card {
     padding: 22px 18px;
   }
+  .timeline-card-body {
+    padding: 22px 18px;
+  }
 }
 
 /* ─── Education ─── */
+.edu-glow-card {
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.edu-glow-card:hover {
+  transform: translateY(-2px);
+}
+
+.edu-card-body {
+  padding: 36px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.edu-card-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 36px;
+  right: 36px;
+  height: 2px;
+  background: var(--gradient-accent);
+}
+
 .edu-card {
   background: var(--gradient-card);
   border: 1px solid var(--border);
@@ -537,7 +614,22 @@
 .skills-categories {
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 28px;
+}
+
+.skill-category-glow {
+  width: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-category-glow:hover {
+  transform: translateY(-2px);
+}
+
+.skill-category-body {
+  padding: 30px 32px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .skill-category-title {
@@ -598,7 +690,7 @@
 }
 
 .skill-tag:hover::before {
-  opacity: 0.08;
+  opacity: 0.1;
 }
 
 .skill-tag .tag-text {
@@ -611,6 +703,30 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
+}
+
+.project-glow-card {
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(234, 179, 8, 0.15);
+}
+
+.project-glow-card.featured {
+  border-color: rgba(234, 179, 8, 0.35);
+}
+
+.project-card-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .project-card {
@@ -634,7 +750,7 @@
 }
 
 .project-card.featured {
-  border-color: rgba(59,130,246,0.28);
+  border-color: rgba(234, 179, 8, 0.3);
 }
 
 .project-featured-badge {
@@ -642,8 +758,8 @@
   top: 20px;
   right: 20px;
   padding: 4px 12px;
-  background: rgba(59,130,246,0.18);
-  border: 1px solid rgba(59,130,246,0.35);
+  background: rgba(234, 179, 8, 0.18);
+  border: 1px solid rgba(234, 179, 8, 0.35);
   border-radius: 20px;
   font-size: 11px;
   color: var(--accent-light);
@@ -715,6 +831,26 @@
   gap: 20px;
 }
 
+.cert-glow-card {
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-glow-card:hover {
+  transform: translateY(-2px);
+}
+
+.cert-card-body {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 .cert-card {
   display: flex;
   align-items: center;
@@ -779,14 +915,18 @@
   box-sizing: border-box;
 }
 
+.contact-glow-wrapper {
+  width: 100%;
+}
+
 .contact-card {
-  background: var(--gradient-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
+  background: transparent;
+  border: none;
   padding: 68px 48px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .contact-card::before {
@@ -797,7 +937,7 @@
   transform: translateX(-50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 

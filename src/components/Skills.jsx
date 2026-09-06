@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/resumeData'
-import { FadeInSection, GradientText } from './AnimatedComponents'
+import { FadeInSection, GradientText, BorderGlow } from './AnimatedComponents'
 
 function SkillTag({ name, index }) {
   return (
@@ -31,14 +31,25 @@ export default function Skills() {
       <div className="skills-categories">
         {Object.entries(skills).map(([category, items], catIndex) => (
           <FadeInSection key={category} delay={catIndex * 0.08}>
-            <div>
-              <div className="skill-category-title">{category}</div>
-              <div className="skill-tags">
-                {items.map((skill, i) => (
-                  <SkillTag key={skill.name} name={skill.name} index={i} />
-                ))}
+            <BorderGlow
+              borderRadius={20}
+              glowColor="45 95 65"
+              colors={['#EAB308', '#FACC15', '#FDE047']}
+              backgroundColor="#111319"
+              edgeSensitivity={26}
+              glowRadius={30}
+              glowIntensity={1.15}
+              className="skill-category-glow"
+            >
+              <div className="skill-category-body">
+                <div className="skill-category-title">{category}</div>
+                <div className="skill-tags">
+                  {items.map((skill, i) => (
+                    <SkillTag key={skill.name} name={skill.name} index={i} />
+                  ))}
+                </div>
               </div>
-            </div>
+            </BorderGlow>
           </FadeInSection>
         ))}
       </div>

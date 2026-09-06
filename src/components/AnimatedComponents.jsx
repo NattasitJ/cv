@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+export { default as BorderGlow } from './reactbits/BorderGlow'
 
 // ─── Orb Background ───────────────────────────────────────────
 export function OrbBackground() {
@@ -109,7 +110,7 @@ export function GradientText({ children, className = '' }) {
     <span
       className={className}
       style={{
-        background: 'linear-gradient(135deg, #60A5FA 0%, #93C5FD 50%, #BFDBFE 100%)',
+        background: 'var(--gradient-text, linear-gradient(135deg, #FEF08A 0%, #FACC15 50%, #EAB308 100%))',
         WebkitBackgroundClip: 'text',
         backgroundClip: 'text',
         WebkitTextFillColor: 'transparent',

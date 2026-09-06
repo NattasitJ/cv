@@ -1,13 +1,23 @@
 import { Download, Mail, Github, Linkedin, MapPin, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { personalInfo } from '../data/resumeData'
-import { FadeInSection, GradientText } from './AnimatedComponents'
+import { FadeInSection, GradientText, BorderGlow } from './AnimatedComponents'
 
 export default function Contact() {
   return (
     <section id="contact" className="contact-section" aria-label="Contact and download">
       <FadeInSection>
-        <div className="contact-card">
+        <BorderGlow
+          borderRadius={32}
+          glowColor="45 95 65"
+          colors={['#EAB308', '#FACC15', '#FDE047']}
+          backgroundColor="#111319"
+          edgeSensitivity={32}
+          glowRadius={45}
+          glowIntensity={1.3}
+          className="contact-glow-wrapper"
+        >
+          <div className="contact-card">
           <p className="section-label" style={{ justifyContent: 'center' }}>
             Let&apos;s Work Together
           </p>
@@ -104,6 +114,7 @@ export default function Contact() {
             </a>
           </div>
         </div>
+        </BorderGlow>
       </FadeInSection>
 
       {/* Footer */}

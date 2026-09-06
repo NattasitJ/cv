@@ -1,44 +1,6 @@
-import { useRef } from 'react'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 import { projects } from '../data/resumeData'
-import { FadeInSection, GradientText } from './AnimatedComponents'
-
-// 3D Tilt Card wrapper
-function TiltCard({ children, className = '' }) {
-  const ref = useRef(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 })
-
-  const handleMouseMove = (e) => {
-    if (!ref.current) return
-    const rect = ref.current.getBoundingClientRect()
-    const nx = (e.clientX - rect.left) / rect.width - 0.5
-    const ny = (e.clientY - rect.top) / rect.height - 0.5
-    x.set(nx)
-    y.set(ny)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000 }}
-    >
-      {children}
-    </motion.div>
-  )
-}
+import { FadeInSection, GradientText, BorderGlow } from './AnimatedComponents'
 
 export default function Projects() {
   return (
@@ -53,8 +15,17 @@ export default function Projects() {
       <div className="projects-grid">
         {projects.map((project, i) => (
           <FadeInSection key={project.id} delay={i * 0.1}>
-            <TiltCard>
-              <div className={`project-card ${project.featured ? 'featured' : ''}`}>
+            <BorderGlow
+              borderRadius={20}
+              glowColor="45 95 65"
+              colors={['#EAB308', '#FACC15', '#FDE047']}
+              backgroundColor="#111319"
+              edgeSensitivity={28}
+              glowRadius={35}
+              glowIntensity={1.2}
+              className={`project-glow-card ${project.featured ? 'featured' : ''}`}
+            >
+              <div className="project-card-body">
                 {project.featured && (
                   <span className="project-featured-badge">Featured</span>
                 )}
@@ -95,7 +66,7 @@ export default function Projects() {
                   )}
                 </div>
               </div>
-            </TiltCard>
+            </BorderGlow>
           </FadeInSection>
         ))}
       </div>

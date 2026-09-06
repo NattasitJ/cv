@@ -1,6 +1,6 @@
 import { MapPin, Mail, Phone } from 'lucide-react'
 import { personalInfo, stats } from '../data/resumeData'
-import { FadeInSection, CountUp, GradientText } from './AnimatedComponents'
+import { FadeInSection, CountUp, GradientText, BorderGlow } from './AnimatedComponents'
 
 export default function About() {
   return (
@@ -13,47 +13,72 @@ export default function About() {
       </FadeInSection>
 
       <div className="about-grid">
-        {/* Bio */}
+        {/* Bio Card */}
         <FadeInSection delay={0.1}>
-          <p className="about-bio">
-            {personalInfo.bio.split('scalable web applications').map((part, i) =>
-              i === 0 ? (
-                <span key={i}>
-                  {part}
-                  <span className="about-highlight">scalable web applications</span>
-                </span>
-              ) : (
-                <span key={i}>{part}</span>
-              )
-            )}
-          </p>
+          <BorderGlow
+            borderRadius={22}
+            glowColor="45 95 65"
+            colors={['#EAB308', '#FACC15', '#FDE047']}
+            backgroundColor="#111319"
+            edgeSensitivity={26}
+            glowRadius={32}
+            glowIntensity={1.2}
+            className="about-bio-glow"
+          >
+            <div className="about-bio-card">
+              <p className="about-bio">
+                {personalInfo.bio.split('scalable web applications').map((part, i) =>
+                  i === 0 ? (
+                    <span key={i}>
+                      {part}
+                      <span className="about-highlight">scalable web applications</span>
+                    </span>
+                  ) : (
+                    <span key={i}>{part}</span>
+                  )
+                )}
+              </p>
 
-          <div className="about-details">
-            <div className="about-detail-item">
-              <MapPin size={15} />
-              <span>{personalInfo.location}</span>
+              <div className="about-details">
+                <div className="about-detail-item">
+                  <MapPin size={15} />
+                  <span>{personalInfo.location}</span>
+                </div>
+                <div className="about-detail-item">
+                  <Mail size={15} />
+                  <span>{personalInfo.email}</span>
+                </div>
+                <div className="about-detail-item">
+                  <Phone size={15} />
+                  <span>{personalInfo.phone}</span>
+                </div>
+              </div>
             </div>
-            <div className="about-detail-item">
-              <Mail size={15} />
-              <span>{personalInfo.email}</span>
-            </div>
-            <div className="about-detail-item">
-              <Phone size={15} />
-              <span>{personalInfo.phone}</span>
-            </div>
-          </div>
+          </BorderGlow>
         </FadeInSection>
 
-        {/* Stats */}
+        {/* Stats Cards */}
         <FadeInSection delay={0.2} direction="left">
           <div className="stats-grid">
             {stats.map((stat) => (
-              <div key={stat.label} className="stat-card">
-                <div className="stat-value">
-                  <CountUp target={stat.value} />
+              <BorderGlow
+                key={stat.label}
+                borderRadius={18}
+                glowColor="45 95 65"
+                colors={['#EAB308', '#FACC15', '#FDE047']}
+                backgroundColor="#111319"
+                edgeSensitivity={24}
+                glowRadius={28}
+                glowIntensity={1.25}
+                className="stat-glow-card"
+              >
+                <div className="stat-card-inner">
+                  <div className="stat-value">
+                    <CountUp target={stat.value} />
+                  </div>
+                  <div className="stat-label">{stat.label}</div>
                 </div>
-                <div className="stat-label">{stat.label}</div>
-              </div>
+              </BorderGlow>
             ))}
           </div>
         </FadeInSection>
